@@ -1,0 +1,18 @@
+
+body {
+  background-color: rgb(20, 255, 130); 
+}  
+
+p a {
+  color: red;
+}
+
+p {
+  font-size: small;
+  color: red;
+}
+
+.big {
+  font-size: xx-large;
+}
+

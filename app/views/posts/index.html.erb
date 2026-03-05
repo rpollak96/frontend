@@ -1,19 +1,18 @@
-<div>
-  <% for post in @posts %>
-    <div>
-      <h4>
-        <%# Display the name of the user that created the post: %>
-        <%# 1. find user who created post %>
-        <% user = User.find_by({ "id" => post["user_id"] }) %>
-        <%# 2. handle any potential bad data where the post is missing a user %>
-        <% if user != nil %>
-          <%= user["first_name"] %>
-        <% else %>
-          anonymous
-        <% end %>
-      </h4>
-      <img src="<%= post["image"] %>">
-      <p><%= post["body"] %></p>
-    </div>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <% for post in @posts %>
+      <div class="col-12 col-md-6 col-lg-3 mb-4">
+        <div class="card h-100">
+          <img src="<%= post["image"] %>" class="card-img-top" alt="Post image">
+          <div class="card-body">
+            <h4 class="card-title">
+              <% user = User.find_by({ "id" => post["user_id"] }) %>
+              <%= user ? user["first_name"] : "anonymous" %>
+            </h4>
+            <p class="card-text"><%= post["body"] %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
